@@ -1,0 +1,34 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Controlls</mat-card-title>
+    </mat-card-header>
+    <form (ngSubmit)="onSubmit()">
+        <p>
+            <mat-form-field appearance="fill">
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="enter your username" required [(ngModel)]="model.username" name="username"
+                    #username="ngModel">
+            </mat-form-field>
+        </p>
+        <p>
+            <button type="submit" mat-flat-button color="accent">Toggle lock</button>        </p>
+    </form>
+</mat-card>
+
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>Lock state</mat-card-title>
+    </mat-card-header>
+    <mat-icon class="lock">{{currentstate}}</mat-icon>
+    <mat-expansion-panel *ngIf="action.user || action.state || action.time">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon class="icon">view_timeline</mat-icon>
+            Previous action
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>User: {{ action.user }}</p>
+        <p>State: {{ action.state }}</p>
+        <p>Time: {{ action.time }}</p>
+      </mat-expansion-panel>
+</mat-card>
